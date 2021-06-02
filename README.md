@@ -12,12 +12,19 @@ In this project we make use of the following technologies:
 <b>What is a Blockchain?</b>
 
 Blockchain is an immutable ledger stored in each node of a decentralized distributed system where clients do not interact with a single server that is vulnerable to attacks by a skilled attacker, but instead the client interacts with a peer to peer distributed network which maintain their own immutable ledgers where even a very skilled attacker has a high possibility of failure which may be caused due to lack of energy resources since cracking through a P2P network requires high computation and processing power.This is made more clear further in the explanation of this technology.
+
 The following figure describes how data is stored in such a system:	
+
+<img height="400" src="readme_images/1.png" />
  
+
 
 In the above figure each block (numbered 1,2,3) contains data which is sensitive to manipulation outside of the block. Once the data is stored in the block it is protected by two layers of security. To understand the security layers provided by the technology we need to understand some prerequisites:
 
 ⦁	Firstly,lets take a look at the contents of each block:
+
+<img height="300" src="readme_images/2.png" />
+
 			 
 The content includes:
 
@@ -74,7 +81,14 @@ Keeping the above points in mind,we can now discuss how mining actually works.
 
 ⦁	Lets consider the following figure in which the top right corner has highest value i.e. FFFF...64 times and bottom left corner has lowest value i.e. 00000...64 times. This means that evey point in the figure has a particular hash value associated with it and the entire figure has all possible hash values.If we move from left to right the value increases and the same happens when we move upwards. Thus the number of leading 0s usually decreases as we move rightwards and upwards. 
 
+<img height="400" src="readme_images/3.png" />
+
+
 ⦁	The target line represents a set of specific values of hash which are acceptable.Any value of hash equal to value on target line or below it is acceptable.Thus a nonce value has to be guessed by the miners system to achieve an acceptable hash value. The smaller the target region , the more the number of leading 0s and lesser the probability of finding an acceptable hash value.In case of a larger number of miners the area is made smaller since with an increase in the number of miners the chances of mining should not always favour a particular miner which will be the case if the difficulty of the does not increase and only a single miner will profit. 
+
+<img height="400" src="readme_images/4.png" />
+
+
 
 ⦁	The miners system has no choice but to use Brute Force method inorder to guess the acceptable value of nonce. This requires a lot of processing power and hence causes a lot of consumption of resources like electrical energy and puts high pressure on the processor which overheats it thus requiring a cooling system.So how is this cost for the miner covered?How does the miner profit?
 
@@ -105,14 +119,25 @@ Keeping the above points in mind,we can now discuss how mining actually works.
   b.	Even if the attacker has the incentive in mind and he still decides to add a malicious block to the blockchain then it will be removed.Once a block is added, all the         nodes in the network add that block to their copy of the blockchain and verify the content of the block.
         
   c.	The list for verification is provided below.This list is very strict and takes into consideration all the variables that maybe changed by the attacker to manipulate         the data.  
+  
+  <img height="400" src="readme_images/5.png" />
+  
         
   d.	A cryptographic puzzle is hard to solve but easier to verify and hence it will be more beneficial to use the processing power to mine fairly and be rewarded than             risk losing the reward plus bearing the economic loss due to high consumption rates.
         
   e.	Now we take into consideration the 2nd challenge i.e. the delay problem.Let us take use the following case: In this case the node in top left added green block to           the blockchain but due to delay the update to blockchain was not detected by the node in bottom right which added its own blue block to the blockchain.The node which             added the green block sent the updation for verification to 4 nodes and the one which added the blue block sent only one node the updation information.
+  
+  <img height="400" src="readme_images/6.png" />
+  
+  
         
   f.	At this point there is a conflict on which block is to added to the blockchain. This conflict is resolved by suspending the system until a new block is added to the         system.There is a rule dictated by the consensus protocol that states that "the longest chain is the king".Let us assume that the cummulative computational power of the         five systems that added the green block is higher than that of the systems that added the blue block.This means that these systems have higher chances of mining a block         than the two systems.
         
   g.	If another green block is added i.e. if any of the five systems that contain green block in their copy of the blockchain mine another block to the blockchain then           due to the consensus protocol rule stated earlier, the copy blockchain of the green system will suffice and the blue blocks will be removed and replaced by the green             blocks newly added to the blockchain.Refer diagram below.
+  
+  <img height="400" src="readme_images/7.png" />
+  
+  
  
   h.	The blue block has been mined by the bottom right system thus the reward associated to it also lost along with the transactions.There is no other option than                 removing the nodes.Thus it i always recommended in a non permissioned peer to peer blockchain system to wait for atleast 6 blocks to be added after the block with your           transactions to ensure that your transaction is confirmed and infact a part of the blockchain and not "orphaned".
         
